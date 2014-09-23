@@ -1,0 +1,29 @@
+{
+  "name": "gulp-jade-script",
+  "version": "1.0.0",
+  "description": "Turn file names in stream into jade script directives",
+  "keywords": [
+    "gulp",
+    "jade"
+  ],
+  "homepage": "https://github.com/oliversalzburg/gulp-jade-script",
+  "author": {
+    "name": "Oliver Salzburg",
+    "email": "oliver.salzburg@gmail.com"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oliversalzburg/gulp-jade-script.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "gulp-util": "^3.0.1",
+    "through2": "^0.6.2"
+  },
+  "license": {
+    "type": "MIT"
+  }
+}
