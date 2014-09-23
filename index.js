@@ -9,7 +9,7 @@ module.exports = function( jadeFile, options ) {
 
 	var write = function( file, encoding, callback ) {
 		if( file.path != "undefined" ) {
-			scriptTags = scriptTags + "\n" + "script(src=\"" + slash( path.relative( options.root, file.path ) ) + "\")";
+			scriptTags = scriptTags + "script(src=\"" + slash( path.relative( options.root, file.path ) ) + "\")" + "\n";
 		}
 		this.push( file );
 		callback();
