@@ -1,4 +1,5 @@
 var fs = require( "fs" );
+var mkdirp = require( "mkdirp" );
 var path = require( "path" );
 var slash = require( "slash" );
 var through = require( "through2" );
@@ -9,14 +10,24 @@ module.exports = function( jadeFile, options ) {
 
 	var write = function( file, encoding, callback ) {
 		if( file.path != "undefined" ) {
-			scriptTags = scriptTags + "script(src=\"/" + slash( path.relative( options.root, file.path ) ) + "\")" + "\n";
+			var relativePath = path.relative( options.root, file.path );
+			var normalized = slash( relativePath );
+			if( options.transform ) {
+				normalized = options.transform( normalized );
+			}
+			scriptTags = scriptTags + "script(src=\"" + normalized + "\")" + "\n";
 		}
 		this.push( file );
 		callback();
 	};
 
 	var flush = function( callback ) {
-		fs.writeFile( jadeFile, scriptTags, callback );
+		var dirname = path.dirname( jadeFile );
+		mkdirp( dirname, function( error ) {
+			if( !error ) {
+				fs.writeFile( jadeFile, scriptTags, callback );
+			}
+		} );
 	};
 
 	return through.obj( write, flush );
