@@ -24,7 +24,5 @@
     "slash": "^1.0.0",
     "through2": "^0.6.2"
   },
-  "license": {
-    "type": "MIT"
-  }
+  "license": "MIT"
 }
