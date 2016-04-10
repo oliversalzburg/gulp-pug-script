@@ -10,12 +10,16 @@ module.exports = function( jadeFile, options ) {
 
 	var write = function( file, encoding, callback ) {
 		if( file.path != "undefined" ) {
-			var relativePath = path.relative( options.root, file.path );
-			var normalized   = slash( relativePath );
+			var relativePath   = path.relative( options.root, file.path );
+			var normalized     = slash( relativePath );
+			var sourceFileName = normalized;
 			if( options.transform ) {
-				normalized = options.transform( normalized );
+				sourceFileName = options.transform( sourceFileName );
 			}
-			scriptTags = scriptTags + "script(src=\"" + normalized + "\")" + "\n";
+			if( options.version ) {
+				sourceFileName = sourceFileName + "?v=" + options.version;
+			}
+			scriptTags = scriptTags + "script(src=\"" + sourceFileName + "\")" + "\n";
 		}
 		this.push( file );
 		callback();
