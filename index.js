@@ -4,7 +4,7 @@ var path    = require( "path" );
 var slash   = require( "slash" );
 var through = require( "through2" );
 
-module.exports = function( jadeFile, options ) {
+module.exports = function( pugFile, options ) {
 	var scriptTags = "";
 	options.root   = options.root || process.cwd();
 
@@ -26,10 +26,10 @@ module.exports = function( jadeFile, options ) {
 	};
 
 	var flush = function( callback ) {
-		var dirname = path.dirname( jadeFile );
+		var dirname = path.dirname( pugFile );
 		mkdirp( dirname, function( error ) {
 			if( !error ) {
-				fs.writeFile( jadeFile, scriptTags, callback );
+				fs.writeFile( pugFile, scriptTags, callback );
 			}
 		} );
 	};

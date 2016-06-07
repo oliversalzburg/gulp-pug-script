@@ -52,7 +52,7 @@
             <option name="USE_TAB_CHARACTER" value="true" />
           </indentOptions>
         </codeStyleSettings>
-        <codeStyleSettings language="Jade">
+        <codeStyleSettings language="pug">
           <indentOptions>
             <option name="USE_TAB_CHARACTER" value="true" />
           </indentOptions>

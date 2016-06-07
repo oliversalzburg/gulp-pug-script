@@ -1,12 +1,12 @@
 {
-  "name": "gulp-jade-script",
+  "name": "gulp-pug-script",
   "version": "1.2.0",
-  "description": "Turn file names in stream into jade script directives",
+  "description": "Turn file names in stream into pug script directives",
   "keywords": [
     "gulp",
-    "jade"
+    "pug"
   ],
-  "homepage": "https://github.com/oliversalzburg/gulp-jade-script",
+  "homepage": "https://github.com/oliversalzburg/gulp-pug-script",
   "author": {
     "name": "Oliver Salzburg",
     "email": "oliver.salzburg@gmail.com"
@@ -14,7 +14,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/oliversalzburg/gulp-jade-script.git"
+    "url": "https://github.com/oliversalzburg/gulp-pug-script.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,7 +22,7 @@
   "dependencies": {
     "mkdirp": "^0.5.0",
     "slash": "^1.0.0",
-    "through2": "^0.6.2"
+    "through2": "^2.0.1"
   },
   "license": "MIT"
 }
