@@ -1,4 +1,4 @@
-gulp-jade-script
+gulp-pug-script
 ================
 
-Turn file names in stream into jade script directives
+Turn file names in stream into pug script directives
