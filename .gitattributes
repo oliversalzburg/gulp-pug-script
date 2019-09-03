@@ -13,6 +13,7 @@
 *.aiff binary
 *.dll binary
 *.docx binary
+*.dotx binary
 *.eot binary
 *.exe binary
 *.jar binary

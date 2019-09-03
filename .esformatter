@@ -51,7 +51,7 @@
 	"lineBreak": {
 		"value": "\n",
 		"before": {
-			"ArrayPatternClosing": 0,
+			"ArrayPatternClosing": "<=1",
 			"ArrayPatternComma": 0,
 			"ArrayPatternOpening": 0,
 			"ArrowFunctionExpressionArrow": 0,
@@ -156,9 +156,9 @@
 			"WhileStatementOpeningBrace": 0
 		},
 		"after": {
-			"ArrayPatternClosing": 1,
-			"ArrayPatternComma": 1,
-			"ArrayPatternOpening": 1,
+			"ArrayPatternClosing": "<=1",
+			"ArrayPatternComma": "<=1",
+			"ArrayPatternOpening": "<=1",
 			"ArrowFunctionExpressionArrow": 0,
 			"ArrowFunctionExpressionClosingBrace": -1,
 			"ArrowFunctionExpressionOpeningBrace": ">=1",
