@@ -8,9 +8,12 @@
 # Visual Studio solutions like to switch to CRLF at times
 *.sln text eol=crlf
 
+*.aar binary
 *.ai binary
 *.aiff binary
 *.dll binary
+*.docx binary
+*.dotx binary
 *.eot binary
 *.exe binary
 *.jar binary
@@ -19,6 +22,7 @@
 *.o binary
 *.pdf binary
 *.png binary
+*.pptx binary
 *.psd binary
 *.so binary
 *.ttf binary
