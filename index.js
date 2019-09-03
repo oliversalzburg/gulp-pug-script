@@ -8,9 +8,9 @@ const through = require( "through2" );
 
 module.exports = ( pugFile, options ) => {
 	let scriptTags = "";
-	options.root = options.root || process.cwd();
-
+	options          = options || {};
 	options.includes = options.includes || [];
+	options.root     = options.root || process.cwd();
 
 	const renderInclude = sourceFileName => `include /${sourceFileName}${"\n"}`;
 	const renderFile    = sourceFileName => `script(src="${sourceFileName}")${"\n"}`;
