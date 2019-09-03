@@ -1,33 +1,47 @@
-var fs      = require( "fs" );
-var mkdirp  = require( "mkdirp" );
-var path    = require( "path" );
-var slash   = require( "slash" );
-var through = require( "through2" );
+"use strict";
 
-module.exports = function( pugFile, options ) {
-	var scriptTags = "";
-	options.root   = options.root || process.cwd();
+const fs      = require( "fs" );
+const mkdirp  = require( "mkdirp" );
+const path    = require( "path" );
+const slash   = require( "slash" );
+const through = require( "through2" );
 
-	var write = function( file, encoding, callback ) {
+module.exports = ( pugFile, options ) => {
+	let scriptTags = "";
+	options.root = options.root || process.cwd();
+
+	options.includes = options.includes || [];
+
+	const renderInclude = sourceFileName => `include /${sourceFileName}${"\n"}`;
+	const renderFile    = sourceFileName => `script(src="${sourceFileName}")${"\n"}`;
+
+	const write = function write( file, encoding, callback ) {
 		if( file.path != "undefined" ) {
-			var relativePath   = path.relative( options.root, file.path );
-			var normalized     = slash( relativePath );
-			var sourceFileName = normalized;
+			const relativePath = path.relative( options.root, file.path );
+			const normalized   = slash( relativePath );
+			let sourceFileName = normalized;
+
 			if( options.transform ) {
 				sourceFileName = options.transform( sourceFileName );
 			}
+
 			if( options.version ) {
 				sourceFileName = sourceFileName + "?v=" + options.version;
 			}
-			scriptTags = scriptTags + "script(src=\"" + sourceFileName + "\")" + "\n";
+
+			scriptTags = scriptTags + renderFile( sourceFileName );
 		}
+
 		this.push( file );
 		callback();
 	};
 
-	var flush = function( callback ) {
-		var dirname = path.dirname( pugFile );
-		mkdirp( dirname, function( error ) {
+	const flush = ( callback ) => {
+		const dirname = path.dirname( pugFile );
+
+		scriptTags = options.includes.map( renderInclude ).join( "" ) + scriptTags;
+
+		mkdirp( dirname, ( error ) => {
 			if( !error ) {
 				fs.writeFile( pugFile, scriptTags, callback );
 			}
